@@ -1,16 +1,16 @@
-import {Country} from './country.model';
+import {CountryData} from './country.model';
 
 export class DataModel {
   constructor(
-    public global: {
-      newConfirmed: number,
-      totalConfirmed: number,
-      newDeaths: number,
-      totalDeaths: number,
-      newRecovered: number,
-      totalRecovered: number
+    public Global: {
+      NewConfirmed: number,
+      TotalConfirmed: number,
+      NewDeaths: number,
+      TotalDeaths: number,
+      NewRecovered: number,
+      TotalRecovered: number
     },
-    public countries: Country[],
+    public Countries: CountryData[],
     public Date: string
   ) {
   }

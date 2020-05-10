@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {DataService} from '../shared/data.service';
+import {Observable, Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +9,23 @@ import {DataService} from '../shared/data.service';
 })
 export class HeaderComponent implements OnInit{
 
-  date: string;
+  date = '';
+  private dateChanged: Subscription;
 
   constructor(private dataService:DataService) {
   }
 
   ngOnInit() {
-    // this.date= this.dataService.getDate();
+    this.dateChanged = this.dataService.dataModelChanged
+      .subscribe( dataModel => {
+        this.date = dataModel.Date
+        console.log('header');
+      })
   }
+
+
   onDate() {
-    this.date= this.dataService.getDate();
+    this.date = this.dataService.getDate();
   }
 
 }

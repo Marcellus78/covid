@@ -1,16 +1,16 @@
-export class Country {
+export class CountryData {
 
   constructor(
-    public country: string,
-    public countryCode: string,
-    public slug: string,
-    public newConfirmed: number,
-    public totalConfirmed: number,
-    public newDeaths: number,
-    public totalDeaths: number,
-    public newRecovered: number,
-    public totalRecovered: number,
-    public date: Date) {
+    public Country: string,
+    public CountryCode: string,
+    public Slug: string,
+    public NewConfirmed: number,
+    public TotalConfirmed: number,
+    public NewDeaths: number,
+    public TotalDeaths: number,
+    public NewRecovered: number,
+    public TotalRecovered: number,
+    public Date: string) {
   }
 
 }

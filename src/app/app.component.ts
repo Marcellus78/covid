@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataStorageService} from './shared/data-storage.service';
+import {Observable, Subject, Subscription} from 'rxjs';
+import {DataModel} from './shared/data.model';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +10,16 @@ import {DataStorageService} from './shared/data-storage.service';
 })
 export class AppComponent implements OnInit {
 
-
+  dataModelChange = new Observable<DataModel>();
 
   constructor(private dataStorageService: DataStorageService) {
   }
 
-  onFetchData() {
-    this.dataStorageService.fetchData();
-  }
-
   ngOnInit() {
-    this.dataStorageService.fetchData();
+    // setTimeout(() => this.dataStorageService.fetchTest(),2000);
+    this.dataStorageService.fetchModel().subscribe();
+  }
+  onFetchData() {
+
   }
 }
