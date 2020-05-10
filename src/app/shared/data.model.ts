@@ -11,7 +11,7 @@ export class DataModel {
       totalRecovered: number
     },
     public countries: Country[],
-    public date: Date
+    public Date: string
   ) {
   }
 }

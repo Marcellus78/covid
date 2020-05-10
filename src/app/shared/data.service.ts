@@ -2,12 +2,19 @@ import {Injectable} from '@angular/core';
 import {DataModel} from './data.model';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
+
 export class DataService {
 
   private dataModel: DataModel;
 
-  getData() {
+  setData(dataModel: DataModel) {
+    this.dataModel = dataModel;
+  }
+
+  getGlobal() {
 
   }
   getCountries() {
@@ -15,5 +22,9 @@ export class DataService {
   }
   getCountry() {
 
+  }
+  getDate() {
+    const date = this.dataModel.Date;
+    return date;
   }
 }

@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <div class="col-md-12">
+    <app-header></app-header>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <button (click)="onFetchData()" value="Fetch"></button>
+      <app-coutries></app-coutries>
+    </div>
+    <div class="col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <app-footer></app-footer>
+  </div>
+</div>
