@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit{
 
 
   onDate() {
-    this.date = this.dataService.getDate();
+
   }
 
 }
