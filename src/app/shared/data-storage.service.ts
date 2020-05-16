@@ -1,16 +1,12 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {DataService} from './data.service';
-import {DataModel} from './data.model';
+import {DataModel} from './model/data.model';
 import {map, tap} from 'rxjs/operators';
 import {Observable, Subject, Subscription} from 'rxjs';
-import {CountryData} from './country.model';
+import {CountryData} from './model/country.model';
+import {CountryDetailModel} from './model/country-detail.model';
 
-interface GetResponse {
-  _embedded: {
-    dataModel: DataModel;
-  }
-}
 
 @Injectable({
   providedIn: 'root'
@@ -37,12 +33,20 @@ export class DataStorageService {
         this.dataService.setData(res);
       });
   }
+  fetchCountry() {
+    return this.http.get<CountryDetailModel>('https://api.covid19api.com/dayone/country/poland')
+      .subscribe( res => {
+        console.log(res);
+        this.dataService.setCountryData(res);
+      });
+  }
   fetchModel(){
     return this.http.get<DataModel>('https://api.covid19api.com/summary')
       .pipe(map(response => {return response}), tap( response => {
         this.dataService.setData(response);
       }));
   }
+
   fetchTest() {
     const countries: CountryData[] = [{
       Country: 'Afghanistan',

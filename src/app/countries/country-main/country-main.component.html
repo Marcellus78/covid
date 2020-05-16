@@ -1,0 +1,17 @@
+<p>{{ id }}</p>
+<p *ngIf="country">{{ country.Slug}}</p>
+<div>
+  <div style="max-height: 100%">
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [colors]="barChartColors"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+    <button class="btn btn-primary" (click)="onCountryDetail()">Detail</button>
+  </div>
+</div>

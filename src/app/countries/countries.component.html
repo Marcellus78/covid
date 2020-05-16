@@ -1,3 +1,8 @@
-<p>Countries works! </p>
-<button class="btn btn-primary" (click)="onDataCheck()">Check</button>
-<span *ngIf="countries"> Countries Array Works!</span>
+<p>Select a country</p>
+<span *ngIf="!countries"> Error reading data please reload</span>
+<ul>
+  <li *ngFor="let country of countries">
+    <a [routerLink]="['', country.Slug]">{{ country.Slug }} </a>
+  </li>
+</ul>
+

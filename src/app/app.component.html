@@ -1,16 +1,15 @@
-<div class="container-fluid">
+<div class="container">
   <div class="col-md-12">
     <app-header></app-header>
   </div>
-  <div class="row">
     <div class="col-md-3">
-      <button class="btn btn-primary" (click)="onFetchData()" value="Fetch"></button>
-      <app-coutries></app-coutries>
+      <div class="pre-scrollable" style="max-height: 80vh">
+        <app-coutries></app-coutries>
     </div>
+  </div>
     <div class="col-md-9">
       <router-outlet></router-outlet>
     </div>
-  </div>
   <div class="col-md-12">
     <app-footer></app-footer>
   </div>

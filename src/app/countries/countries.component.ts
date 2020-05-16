@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataService} from '../shared/data.service';
 import {Subscription} from 'rxjs';
-import {CountryData} from '../shared/country.model';
+import {CountryData} from '../shared/model/country.model';
 
 @Component({
   selector: 'app-coutries',

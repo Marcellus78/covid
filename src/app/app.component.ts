@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DataStorageService} from './shared/data-storage.service';
 import {Observable, Subject, Subscription} from 'rxjs';
-import {DataModel} from './shared/data.model';
+import {DataModel} from './shared/model/data.model';
 
 @Component({
   selector: 'app-root',
