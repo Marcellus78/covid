@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {DataService} from '../../shared/data.service';
 import {CountryData} from '../../shared/model/country.model';
 import {Subscription} from 'rxjs';
@@ -51,6 +51,7 @@ export class CountryMainComponent implements OnInit{
     { data: [0,0,0,0,0,0], label: 'Global' },
   ];
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private dataService: DataService,
               private dataStorageService: DataStorageService) {
   }
@@ -69,7 +70,7 @@ export class CountryMainComponent implements OnInit{
     });
   }
   onCountryDetail() {
-    this.dataStorageService.fetchCountry();
+    this.router.navigate(['/detail']);
   }
   private setChartData(data: GlobalData){
     const newData = [

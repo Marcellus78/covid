@@ -34,11 +34,10 @@ export class DataStorageService {
       });
   }
   fetchCountry() {
-    return this.http.get<CountryDetailModel>('https://api.covid19api.com/dayone/country/poland')
-      .subscribe( res => {
-        console.log(res);
-        this.dataService.setCountryData(res);
-      });
+    return this.http.get<CountryDetailModel[]>('https://api.covid19api.com/dayone/country/poland')
+      .pipe(map(response => {return response}), tap( response => {
+        this.dataService.setCountryData(response);
+      }));
   }
   fetchModel(){
     return this.http.get<DataModel>('https://api.covid19api.com/summary')
