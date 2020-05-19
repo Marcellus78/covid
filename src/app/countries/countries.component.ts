@@ -17,14 +17,16 @@ export class CountriesComponent implements OnInit{
   }
 
   ngOnInit() {
+    this.countries = this.dataService.getCountries();
     this.countriesChanged = this.dataService.countriesChanged
       .subscribe((countries: CountryData[]) => {
         this.countries = countries;
       });
 
   }
-  onDataCheck() {
-    console.log(this.countries.length);
+  onTest(slug: string) {
+    console.log(slug);
   }
+
 
 }

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     // setTimeout(() => this.dataStorageService.fetchTest(),2000);
-    this.dataStorageService.fetchModel().subscribe();
+    // this.dataStorageService.fetchModel().subscribe();
   }
   onFetchData() {
 

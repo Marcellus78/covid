@@ -2,7 +2,7 @@
 <span *ngIf="!countries"> Error reading data please reload</span>
 <ul>
   <li *ngFor="let country of countries">
-    <a [routerLink]="['', country.Slug]">{{ country.Slug }} </a>
+    <a [routerLink]="['', country.Slug]" (click)="onTest(country.Slug)">{{ country.Slug }} </a>
   </li>
 </ul>
 

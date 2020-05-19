@@ -4,6 +4,7 @@ import {Observable, Subject} from 'rxjs';
 import {CountryData} from './model/country.model';
 import {CountryDetailModel} from './model/country-detail.model';
 import {DataStorageService} from './data-storage.service';
+import {rejects} from 'assert';
 
 
 @Injectable({
@@ -27,6 +28,17 @@ export class DataService {
     this.countriesChanged.next(dataModel.Countries);
     console.log('working');
   }
+  getData(){
+    return this.dataModel;
+  }
+  getCountries() {
+    if(this.dataModel){
+      return this.dataModel.Countries;
+    }
+  }
+  getGlobalData() {
+    return this.dataModel.Global;
+  }
   setCountryData(data: CountryDetailModel[]) {
     this.countryDetail = data;
     this.countryChanged.next(this.countryDetail);
@@ -40,6 +52,7 @@ export class DataService {
     countryData = this.dataModel.Countries
       .find(country => country.Slug === countrySlug);
     return countryData;
+
   }
 
 }

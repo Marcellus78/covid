@@ -14,9 +14,23 @@ import {CountryDetailModel} from './model/country-detail.model';
 export class DataStorageService {
 
 
-  private dataModel: DataModel = null;
+
+  apiUrl: string = 'https://api.covid19api.com/summary';
   constructor(private http: HttpClient,
               private dataService: DataService) {
+  }
+
+  init() {
+    return new Promise<void>((resolve, reject) => {
+      this.http.get<DataModel>(this.apiUrl)
+        .toPromise()
+        .then( response => {
+          this.dataService.setData(response);
+          resolve();
+        }, err => {
+          reject(err);
+        })
+    });
   }
 
   fetchData() {
