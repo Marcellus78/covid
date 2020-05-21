@@ -9,7 +9,7 @@ const routes: Routes = [
   {path: '', component: CountryMainComponent},
   {path: 'detail', component: CountryDetailComponent},
   {path: ':id', component: CountryMainComponent},
-  {path: 'detail/:countryId', component: CountryDetailComponent},
+  {path: 'detail/:countryId', component: CountryDetailComponent, resolve: [CountryResolverService]},
 ];
 
 @NgModule({

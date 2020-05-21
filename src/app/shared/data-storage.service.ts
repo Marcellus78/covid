@@ -13,9 +13,8 @@ import {CountryDetailModel} from './model/country-detail.model';
 })
 export class DataStorageService {
 
-
-
   apiUrl: string = 'https://api.covid19api.com/summary';
+
   constructor(private http: HttpClient,
               private dataService: DataService) {
   }
@@ -32,23 +31,8 @@ export class DataStorageService {
         })
     });
   }
-
-  fetchData() {
-    // return this.http.get<DataModel>('https://api.covid19api.com/summary')
-    //   .pipe(map(response => {
-    //     return response;
-    //   }), tap( response => {
-    //     this.dataService.setData(response);
-    //   }));
-    // return this.http.get('https://api.covid19api.com/summary').subscribe( res => console.log(res));
-    return this.http.get<DataModel>('https://api.covid19api.com/summary')
-      .subscribe(res =>{
-        console.log(res.Date);
-        this.dataService.setData(res);
-      });
-  }
-  fetchCountry() {
-    return this.http.get<CountryDetailModel[]>('https://api.covid19api.com/dayone/country/poland')
+  fetchCountry(countrySlug: string) {
+    return this.http.get<CountryDetailModel[]>('https://api.covid19api.com/dayone/country/'+countrySlug)
       .pipe(map(response => {return response}), tap( response => {
         this.dataService.setCountryData(response);
       }));
@@ -59,7 +43,13 @@ export class DataStorageService {
         this.dataService.setData(response);
       }));
   }
-
+  fetchData() {
+    return this.http.get<DataModel>('https://api.covid19api.com/summary')
+      .subscribe(res =>{
+        console.log(res.Date);
+        this.dataService.setData(res);
+      });
+  }
   fetchTest() {
     const countries: CountryData[] = [{
       Country: 'Afghanistan',

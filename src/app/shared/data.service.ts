@@ -28,8 +28,10 @@ export class DataService {
     this.countriesChanged.next(dataModel.Countries);
     console.log('working');
   }
-  getData(){
-    return this.dataModel;
+  setCountryData(data: CountryDetailModel[]) {
+    this.countryDetail = data;
+    this.countryChanged.next(this.countryDetail);
+    console.log(this.countryDetail)
   }
   getCountries() {
     if(this.dataModel){
@@ -38,11 +40,6 @@ export class DataService {
   }
   getGlobalData() {
     return this.dataModel.Global;
-  }
-  setCountryData(data: CountryDetailModel[]) {
-    this.countryDetail = data;
-    this.countryChanged.next(this.countryDetail);
-    console.log(this.countryDetail)
   }
   getCountryDetailData() {
     return this.countryDetail;

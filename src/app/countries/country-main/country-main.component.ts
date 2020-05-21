@@ -5,8 +5,6 @@ import {CountryData} from '../../shared/model/country.model';
 import {Subscription} from 'rxjs';
 import {ChartDataSets, ChartOptions, ChartType} from 'chart.js';
 import {Color, Label} from 'ng2-charts';
-import {DataStorageService} from '../../shared/data-storage.service';
-import {consoleTestResultHandler} from 'tslint/lib/test';
 
 export interface GlobalData {
   NewConfirmed: number,
@@ -72,7 +70,7 @@ export class CountryMainComponent implements OnInit, OnDestroy{
     });
   }
   onCountryDetail() {
-    this.router.navigate(['/detail'],{relativeTo: this.route});
+    this.router.navigate(['/detail',  this.id],{relativeTo: this.route});
   }
   ngOnDestroy() {
     if(this.subscription) {

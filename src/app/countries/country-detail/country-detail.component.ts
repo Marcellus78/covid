@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable, Subscription} from 'rxjs';
 import {DataService} from '../../shared/data.service';
 import {CountryDetailModel} from '../../shared/model/country-detail.model';
-import {DataStorageService} from '../../shared/data-storage.service';
 
 @Component({
   selector: 'app-country-detail',
@@ -11,19 +9,16 @@ import {DataStorageService} from '../../shared/data-storage.service';
 })
 export class CountryDetailComponent implements OnInit {
 
-  subscription: Subscription;
   countryDetailData: CountryDetailModel[] = null;
 
-  constructor(private dataService: DataService,
-              private dataStorageService: DataStorageService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    this.dataStorageService.fetchCountry().subscribe();
-    this.subscription = this.dataService.countryChanged.subscribe(data => {
-      this.countryDetailData = data;
-    });
+    this.countryDetailData = this.dataService.getCountryDetailData()
   }
+
   onGetData() {
     console.log(this.countryDetailData[0].Country);
+    console.log(this.countryDetailData.length);
   }
 }
