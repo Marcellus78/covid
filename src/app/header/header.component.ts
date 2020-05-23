@@ -10,22 +10,12 @@ import {Observable, Subscription} from 'rxjs';
 export class HeaderComponent implements OnInit{
 
   date = '';
-  private dateChanged: Subscription;
 
   constructor(private dataService:DataService) {
   }
 
   ngOnInit() {
-    this.dateChanged = this.dataService.dataModelChanged
-      .subscribe( dataModel => {
-        this.date = dataModel.Date
-        console.log('header');
-      })
-  }
-
-
-  onDate() {
-
+    this.date = this.dataService.getLastUpdated();
   }
 
 }

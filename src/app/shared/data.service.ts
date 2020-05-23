@@ -38,6 +38,9 @@ export class DataService {
       return this.dataModel.Countries;
     }
   }
+  getLastUpdated() {
+    return this.dataModel.Date;
+  }
   getGlobalData() {
     return this.dataModel.Global;
   }

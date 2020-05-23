@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {DataService} from '../shared/data.service';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-footer',
@@ -9,17 +7,10 @@ import {Subscription} from 'rxjs';
 })
 export class FooterComponent implements OnInit{
 
-  date = '';
-  private dateChanged: Subscription;
 
-  constructor(private dataService: DataService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.dateChanged = this.dataService.dateChanged
-      .subscribe( date =>{
-        this.date = date;
-        console.log('footer');
-      })
   }
 }

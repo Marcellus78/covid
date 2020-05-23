@@ -1,11 +1,8 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <span>Header Works {{ date }}</span>
-
+      <a href="#" class="navbar-brand">Covid-19 Charts</a>
     </div>
-    <form class="navbar-form navbar-left">
-      <button class="btn btn-primary navbar-btn" (click)="onDate()">Test</button>
-    </form>
+    <div class="nav navbar-right">Dane zaktualizowane {{ date | date: 'dd-MM-yy'}}</div>
   </div>
 </nav>

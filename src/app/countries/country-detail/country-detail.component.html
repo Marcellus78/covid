@@ -1,9 +1,14 @@
-<p>country-detail works!</p>
-<span *ngIf="countryDetailData">{{ countryDetailData[0].Country }}</span>
-<button class="btn btn-primary" (click)="onGetData()">Test</button>
-<ul>
-  <li *ngFor="let country of countryDetailData">
-    {{ country.Date | date:"dd/MM/yy"}} | {{country.Confirmed}} | {{ country.Active}}
-  </li>
-</ul>
+<div class="flex-item">
+  <div style="display: block;">
+    <canvas baseChart width="400" height="400"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            [plugins]="lineChartPlugins"
+            (chartHover)="chartHovered($event)"></canvas>
+  </div>
+</div>
 

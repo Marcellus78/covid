@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {DataService} from './data.service';
 import {DataModel} from './model/data.model';
-import {map, tap} from 'rxjs/operators';
+import {map, retry, tap} from 'rxjs/operators';
 import {Observable, Subject, Subscription} from 'rxjs';
 import {CountryData} from './model/country.model';
 import {CountryDetailModel} from './model/country-detail.model';
@@ -27,12 +27,13 @@ export class DataStorageService {
           this.dataService.setData(response);
           resolve();
         }, err => {
-          reject(err);
+          // reject(err);
+          retry(3);
         })
     });
   }
   fetchCountry(countrySlug: string) {
-    return this.http.get<CountryDetailModel[]>('https://api.covid19api.com/dayone/country/'+countrySlug)
+    return this.http.get<CountryDetailModel[]>('https://api.covid19api.com/total/dayone/country/'+countrySlug)
       .pipe(map(response => {return response}), tap( response => {
         this.dataService.setCountryData(response);
       }));
