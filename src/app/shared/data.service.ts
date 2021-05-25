@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {DataModel} from './model/data.model';
-import {Observable, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {CountryData} from './model/country.model';
 import {CountryDetailModel} from './model/country-detail.model';
-import {DataStorageService} from './data-storage.service';
-import {rejects} from 'assert';
 
 
 @Injectable({
